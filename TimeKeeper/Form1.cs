@@ -15,6 +15,7 @@ namespace TimeKeeper
     {
         private BackgroundWorker _backgroundWorker;
         private bool ElementFound { get; set; }
+        public int SecondsOnline { get; set; }
 
         public form1()
         {
@@ -31,6 +32,8 @@ namespace TimeKeeper
             {
                 WorkerReportsProgress = true,
             };
+
+            SecondsOnline = 0;
 
             _backgroundWorker.DoWork += BackgroundWorker_DoWork;
             _backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
@@ -94,9 +97,10 @@ namespace TimeKeeper
                     bool beRigthBack = myElement.Current.HelpText.Contains("Status set to Be right back");
                     bool away = myElement.Current.HelpText.Contains("Status set to Away");
                     bool offline = myElement.Current.HelpText.Contains("Status set to Offline");
-                    if (notStarted != true | beRigthBack != false | away != false | offline != false)
+                    if (notStarted != true & beRigthBack != true & away != true & offline != true)
                     {
-                        _backgroundWorker.ReportProgress(1, myElement.Current.HelpText); // Send information to main thread
+                        SecondsOnline++;
+                        _backgroundWorker.ReportProgress(1, SecondsOnline); // Send information to main thread
                     }
                 }
                 catch (Exception)
