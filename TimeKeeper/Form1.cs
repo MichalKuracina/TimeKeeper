@@ -23,8 +23,8 @@ namespace TimeKeeper
 
             // Set windows position
 
-            //this.StartPosition = FormStartPosition.Manual;
-            //this.Location = new Point(100, Screen.PrimaryScreen.Bounds.Height - 200);
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, Screen.PrimaryScreen.Bounds.Height - 200);
 
             // Initialize BackgroundWorker
 
@@ -87,28 +87,21 @@ namespace TimeKeeper
 
             while (true)
             {
-                // Status set to Be right back
-                // Status set to Away
-                // Status set to Offline
-                // property does not exists
-                try
+                bool notStarted = String.IsNullOrEmpty(myElement.Current.HelpText); // can be empty is Team was not started
+                bool beRigthBack = myElement.Current.HelpText.Contains("Status set to Be right back");
+                bool away = myElement.Current.HelpText.Contains("Status set to Away");
+                bool offline = myElement.Current.HelpText.Contains("Status set to Offline");
+                if (!notStarted & !beRigthBack & !away & !offline)
                 {
-                    bool notStarted = myElement.Current.HelpText.Contains("");
-                    bool beRigthBack = myElement.Current.HelpText.Contains("Status set to Be right back");
-                    bool away = myElement.Current.HelpText.Contains("Status set to Away");
-                    bool offline = myElement.Current.HelpText.Contains("Status set to Offline");
-                    if (notStarted != true & beRigthBack != true & away != true & offline != true)
-                    {
-                        SecondsOnline++;
-                        _backgroundWorker.ReportProgress(1, SecondsOnline); // Send information to main thread
-                    }
-                }
-                catch (Exception)
-                {
-                    // 'HelpText' property does not exist because Microsoft Teams is not started
-                }
+                    SecondsOnline++;
+                    TimeSpan t = TimeSpan.FromSeconds(SecondsOnline);
 
-                
+                    string result = string.Format("{0:D2}:{1:D2}:{2:D2}",
+                                    t.Hours,
+                                    t.Minutes,
+                                    t.Seconds);
+                    _backgroundWorker.ReportProgress(1, result); // Send information to main thread
+                }
                 System.Threading.Thread.Sleep(1000);
             }
 
