@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Automation;
 
+
 namespace TimeKeeper
 {
     public partial class form1 : Form
@@ -17,15 +18,17 @@ namespace TimeKeeper
         private bool ElementFound { get; set; }
         public int SecondsOnline { get; set; }
 
+
         public form1()
         {
             InitializeComponent();
+            notifyIcon1.Text = "00:00:00";
 
             // Set windows position
 
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(100, Screen.PrimaryScreen.Bounds.Height - 200);
-
+            this.Location = new Point(20, Screen.PrimaryScreen.Bounds.Height - 150);
+         
             // Initialize BackgroundWorker
 
             _backgroundWorker = new BackgroundWorker()
@@ -111,7 +114,13 @@ namespace TimeKeeper
         {
             string fromWorker = e.UserState.ToString();
             lbl_Status.Text = fromWorker;
+            notifyIcon1.Text = fromWorker;
         }
 
+        private void lbl_Status_Click(object sender, EventArgs e)
+        {
+            Hide();
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
