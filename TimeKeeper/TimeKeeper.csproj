@@ -4,10 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>chicken_animal_5834.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="chicken_animal_5834.ico" />
+  </ItemGroup>
+
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.WindowsDesktop.App"/>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App" />
 	</ItemGroup>
 
 </Project>

@@ -15,15 +15,24 @@ namespace TimeKeeper
     public partial class form1 : Form
     {
         private BackgroundWorker _backgroundWorker;
+        private Log log;
+
         private bool ElementFound { get; set; }
         public int SecondsOnline { get; set; }
+        public string StartingTime { get; set; }
 
 
         public form1()
         {
             InitializeComponent();
-            notifyIcon1.Text = "00:00:00";
-
+            
+            // Instantiate log file, get today's progress
+            log = new Log();
+            log.Create();
+            StartingTime = log.Get();
+            notifyIcon1.Text = StartingTime;
+            SecondsOnline = (int)TimeSpan.Parse(StartingTime).TotalSeconds;
+            
             // Set windows position
 
             this.StartPosition = FormStartPosition.Manual;
@@ -36,7 +45,7 @@ namespace TimeKeeper
                 WorkerReportsProgress = true,
             };
 
-            SecondsOnline = 0;
+            
 
             _backgroundWorker.DoWork += BackgroundWorker_DoWork;
             _backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
@@ -103,6 +112,8 @@ namespace TimeKeeper
                                     t.Hours,
                                     t.Minutes,
                                     t.Seconds);
+
+                    log.Write(result);
                     _backgroundWorker.ReportProgress(1, result); // Send information to main thread
                 }
                 System.Threading.Thread.Sleep(1000);
