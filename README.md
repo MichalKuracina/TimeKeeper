@@ -6,5 +6,5 @@ Winforms + System.Windows.Automation
 
 ![git](https://github.com/MichalKuracina/TimeKeeper/blob/master/TimeKeeper/Resources/TimeKeeperGif.gif)
 
-Write down the progress to txt to check how much did you sit behind your computer in real
+Write down the progress to txt to check how much do you sit behind computer in real!
 ![screenshot](https://github.com/MichalKuracina/TimeKeeper/blob/master/TimeKeeper/Resources/2022-08-01%2018_10_25-History.txt%20-%20Notepad.png)
