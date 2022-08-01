@@ -7,14 +7,12 @@ namespace TimeKeeper
 {
     public class Log
     {
-        private string _location;
-        private string _baseDirectory;
         private string _logDirectory;
         private string _logFullPath;
 
-        public Log()
+        public Log(string logDirectory)
         {
-            _logDirectory = "C:\\IBOTS\\TimeKeeper\\History";
+            _logDirectory = logDirectory;
             _logFullPath = _logDirectory + "\\History.txt";
         }
 

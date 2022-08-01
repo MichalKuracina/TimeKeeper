@@ -27,7 +27,7 @@ namespace TimeKeeper
             InitializeComponent();
             
             // Instantiate log file, get today's progress
-            log = new Log();
+            log = new Log("C:\\IBOTS\\TimeKeeper\\History");
             log.Create();
             StartingTime = log.Get();
             notifyIcon1.Text = StartingTime;
