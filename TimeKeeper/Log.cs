@@ -14,9 +14,7 @@ namespace TimeKeeper
 
         public Log()
         {
-            _location = System.Reflection.Assembly.GetExecutingAssembly().Location; // Where the executing assembly is currently located 
-            _baseDirectory = System.IO.Path.GetDirectoryName(_location);
-            _logDirectory = _baseDirectory + "\\History";
+            _logDirectory = "C:\\IBOTS\\TimeKeeper\\History";
             _logFullPath = _logDirectory + "\\History.txt";
         }
 
