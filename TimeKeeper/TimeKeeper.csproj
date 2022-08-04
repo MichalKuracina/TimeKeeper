@@ -4,11 +4,19 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>chicken_animal_5834.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\time.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="chicken_animal_5834.ico" />
+    <None Remove="Resources\time.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\time.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\time.ico" />
   </ItemGroup>
 
 	<ItemGroup>
