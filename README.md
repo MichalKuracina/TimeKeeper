@@ -1,6 +1,6 @@
 # TimeKeeper
 
-You are constantly checking 'HelpText' property of the Teams element on your taskbar with 1 sec sleep. This is becasue elements in taskbar are not emitting any events except focus. Also 'AutomationPropertyChangedEventHandler' is not working here :unamused:
+You are constantly checking 'HelpText' property of the Teams element on your taskbar with 1 sec sleep. This is bacause elements in taskbar are not emitting any events except focus. Also 'AutomationPropertyChangedEventHandler' is not working here :unamused:
 
 Winforms + System.Windows.Automation
 
